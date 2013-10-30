@@ -105,6 +105,7 @@
   NSLog(@"%@", notification);
   if ([[notification userInfo][@"Player State"] isEqualToString:@"Playing"]) {
     if ([[Subtitles sharedInstance] isReady]) {
+      [panel setFloatingPanel:YES];
       if (timer) {
         dispatch_resume(timer);
       } else {
@@ -113,6 +114,7 @@
     }
   } else {
     dispatch_suspend(timer);
+    [panel setFloatingPanel:NO];
     if ([[notification userInfo][@"Player State"] isEqualToString:@"Stopped"]) {
       [panel orderOut:nil];
     }
