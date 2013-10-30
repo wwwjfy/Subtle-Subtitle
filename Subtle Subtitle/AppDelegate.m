@@ -67,7 +67,7 @@
 }
 
 - (void)setTimer {
-  _timer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(showLine:) userInfo:nil repeats:YES];
+  _timer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(showLine:) userInfo:nil repeats:YES];
 }
 
 - (void)showLine:(NSTimer *)timer {
