@@ -52,8 +52,12 @@
   NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGBK_95);
   NSString *content = [NSString stringWithContentsOfFile:filename encoding:gbkEncoding error:&err];
   if (err) {
-    NSLog(@"Error reading srt file: %@", [err localizedDescription]);
-    return NO;
+    err = nil;
+    content = [NSString stringWithContentsOfFile:filename usedEncoding:nil error:&err];
+    if (err) {
+      NSLog(@"Error reading srt file: %@", [err localizedDescription]);
+      return NO;
+    }
   }
   [SrtParser parseContentOfSrtFile:content];
   [self setTimerIfNecessary];
