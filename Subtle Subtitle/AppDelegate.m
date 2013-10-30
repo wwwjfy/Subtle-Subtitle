@@ -15,7 +15,8 @@
 @interface AppDelegate () {
   NSPanel *panel;
   NSUInteger subIndex;
-  NSTimer *_timer;
+  BOOL isTimerRunning;
+  dispatch_source_t timer;
   NSText *lineText;
   iTunesApplication *iTunes;
 }
@@ -48,6 +49,7 @@
 }
 
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
+  // try GBK encoding, and then take the guess
   NSError *err;
   NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGBK_95);
   NSString *content = [NSString stringWithContentsOfFile:filename encoding:gbkEncoding error:&err];
@@ -71,13 +73,25 @@
 }
 
 - (void)setTimer {
-  _timer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(showLine:) userInfo:nil repeats:YES];
+  NSLog(@"set timer");
+  timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER,
+                                 0,
+                                 DISPATCH_TIMER_STRICT,
+                                 dispatch_get_main_queue());
+  dispatch_source_set_event_handler(timer, ^{
+    [self showLine];
+  });
+  dispatch_source_set_timer(timer,
+                            dispatch_time(DISPATCH_TIME_NOW, 0),
+                            100 * NSEC_PER_MSEC,
+                            50 * NSEC_PER_MSEC);
+  dispatch_resume(timer);
 }
 
-- (void)showLine:(NSTimer *)timer {
-  subIndex = [[Subtitles sharedInstance] getLineIndexAt:[iTunes playerPosition]];
+- (void)showLine {
+  subIndex = [[Subtitles sharedInstance] getLineIndexAt:([iTunes playerPosition] + 1)];
   Line *line = [[Subtitles sharedInstance] getLineAtIndex:subIndex];
-  if ([line getTime] <= [iTunes playerPosition]) {
+  if ([line getTime] <= ([iTunes playerPosition] + 1)) {
     if ([line text]) {
       [lineText setString:[line text]];
       [panel orderFront:nil];
@@ -88,13 +102,17 @@
 }
 
 - (void)info:(NSNotification *)notification {
+  NSLog(@"%@", notification);
   if ([[notification userInfo][@"Player State"] isEqualToString:@"Playing"]) {
-    if (!_timer) {
-      [self setTimer];
+    if ([[Subtitles sharedInstance] isReady]) {
+      if (timer) {
+        dispatch_resume(timer);
+      } else {
+        [self setTimer];
+      }
     }
   } else {
-    [_timer invalidate];
-    _timer = nil;
+    dispatch_suspend(timer);
     if ([[notification userInfo][@"Player State"] isEqualToString:@"Stopped"]) {
       [panel orderOut:nil];
     }
