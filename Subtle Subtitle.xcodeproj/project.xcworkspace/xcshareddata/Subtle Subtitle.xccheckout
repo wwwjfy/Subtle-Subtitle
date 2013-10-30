@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>922410BE-3FD9-467A-B916-DF87CD3E794C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Subtle Subtitle</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1B87A403-DD42-4567-A095-57A0284ECEDF</key>
+		<string>ssh://github.com/wwwjfy/Subtle-Subtitle.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Subtle Subtitle.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1B87A403-DD42-4567-A095-57A0284ECEDF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/wwwjfy/Subtle-Subtitle.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1B87A403-DD42-4567-A095-57A0284ECEDF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B87A403-DD42-4567-A095-57A0284ECEDF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Subtle Subtitle</string>
+		</dict>
+	</array>
+</dict>
+</plist>
