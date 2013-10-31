@@ -51,11 +51,13 @@
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
   // try GBK encoding, and then take the guess
   NSError *err;
-  NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGBK_95);
-  NSString *content = [NSString stringWithContentsOfFile:filename encoding:gbkEncoding error:&err];
+  NSString *content;
+  content = [NSString stringWithContentsOfFile:filename usedEncoding:nil error:&err];
   if (err) {
+    NSLog(@"Error reading srt file: %@", [err localizedDescription]);
     err = nil;
-    content = [NSString stringWithContentsOfFile:filename usedEncoding:nil error:&err];
+    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGBK_95);
+    content = [NSString stringWithContentsOfFile:filename encoding:gbkEncoding error:&err];
     if (err) {
       NSLog(@"Error reading srt file: %@", [err localizedDescription]);
       return NO;
