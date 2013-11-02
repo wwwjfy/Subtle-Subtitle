@@ -62,7 +62,7 @@
 
 - (NSUInteger)getLineIndexAt:(double)time {
   NSUInteger low = 0;
-  NSUInteger high = [lines count];
+  NSUInteger high = [lines count] - 1;
   NSUInteger mid;
   while (low < high) {
     mid = low + (high - low) / 2;
