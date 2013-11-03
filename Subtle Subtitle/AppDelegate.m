@@ -10,10 +10,11 @@
 
 #import "iTunes.h"
 #import "SrtParser.h"
+#import "SubtitlePanel.h"
 #import "Subtitles.h"
 
 @interface AppDelegate () {
-  NSPanel *panel;
+  SubtitlePanel *panel;
   NSUInteger subIndex;
   BOOL isTimerRunning;
   dispatch_source_t timer;
@@ -31,11 +32,10 @@
   iTunes = (iTunesApplication *)[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
 
   NSRect screenRect = [[NSScreen mainScreen] frame];
-  panel = [[NSPanel alloc] initWithContentRect:NSMakeRect(screenRect.origin.x + 100,
-                                                          screenRect.origin.y + 100,
-                                                          800,
-                                                          100) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
-  [panel setIgnoresMouseEvents:YES];
+  panel = [[SubtitlePanel alloc] initWithContentRect:NSMakeRect(screenRect.origin.x + 500,
+                                                                screenRect.origin.y + 50,
+                                                                800,
+                                                                100) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
   [panel setHidesOnDeactivate:NO];
   [panel setFloatingPanel:YES];
   [panel setAlphaValue:0.9];
@@ -45,11 +45,12 @@
   [lineText setBackgroundColor:[NSColor clearColor]];
   [lineText setFont:[NSFont fontWithName:@"Helvetica" size:18]];
   [lineText setAlignment:NSCenterTextAlignment];
+  [lineText setSelectable:NO];
   [[panel contentView] addSubview:lineText];
 }
 
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
-  // try GBK encoding, and then take the guess
+  // guess encoding, if failed, try GBK
   NSError *err;
   NSString *content;
   content = [NSString stringWithContentsOfFile:filename usedEncoding:nil error:&err];
@@ -66,6 +67,14 @@
   [SrtParser parseContentOfSrtFile:content];
   [self setTimerIfNecessary];
   return YES;
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+  [panel setIgnoresMouseEvents:NO];
+}
+
+- (void)applicationDidResignActive:(NSNotification *)notification {
+  [panel setIgnoresMouseEvents:YES];
 }
 
 - (void)setTimerIfNecessary {

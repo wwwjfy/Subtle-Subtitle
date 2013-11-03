@@ -14,6 +14,7 @@
 		36698D77D9E716A981A557C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698F788C2B48EB0DB77F2B /* main.m */; };
 		36698E3076569BDBDFB3D4D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36698A005969B0329BDEDA7A /* InfoPlist.strings */; };
 		36698F762012B1092A36D759 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36698D5F6C3A88F87A289EB6 /* Cocoa.framework */; };
+		EA134FAF182662EA00125E4D /* SubtitlePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA134FAE182662EA00125E4D /* SubtitlePanel.m */; };
 		EAD15D2B18165082007EDBD9 /* SrtParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15D2A18165082007EDBD9 /* SrtParser.m */; };
 		EAD15D2E18166D14007EDBD9 /* Subtitles.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15D2D18166D14007EDBD9 /* Subtitles.m */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,8 @@
 		36698EB13F64E0B4EBD4103F /* Subtle Subtitle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Subtle Subtitle-Prefix.pch"; sourceTree = "<group>"; };
 		36698F607ED54B37BB97213E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		36698F788C2B48EB0DB77F2B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EA134FAD182662EA00125E4D /* SubtitlePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitlePanel.h; sourceTree = "<group>"; };
+		EA134FAE182662EA00125E4D /* SubtitlePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitlePanel.m; sourceTree = "<group>"; };
 		EAD15D2918165082007EDBD9 /* SrtParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SrtParser.h; sourceTree = "<group>"; };
 		EAD15D2A18165082007EDBD9 /* SrtParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SrtParser.m; sourceTree = "<group>"; };
 		EAD15D2C18166D14007EDBD9 /* Subtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subtitles.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				366980DC5C0DC0A991AB8D6E /* MainMenu.xib */,
 				EAD15D2918165082007EDBD9 /* SrtParser.h */,
 				EAD15D2A18165082007EDBD9 /* SrtParser.m */,
+				EA134FAD182662EA00125E4D /* SubtitlePanel.h */,
+				EA134FAE182662EA00125E4D /* SubtitlePanel.m */,
 				EAD15D2C18166D14007EDBD9 /* Subtitles.h */,
 				EAD15D2D18166D14007EDBD9 /* Subtitles.m */,
 				36698967DA7E0F2B94B49B3D /* Supporting Files */,
@@ -187,6 +192,7 @@
 				EAD15D2E18166D14007EDBD9 /* Subtitles.m in Sources */,
 				EAD15D2B18165082007EDBD9 /* SrtParser.m in Sources */,
 				36698CF048C1E5322E5902AF /* AppDelegate.m in Sources */,
+				EA134FAF182662EA00125E4D /* SubtitlePanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
