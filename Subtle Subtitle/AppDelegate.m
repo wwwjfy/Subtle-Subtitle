@@ -139,7 +139,6 @@
 }
 
 - (void)setTimer {
-  NSLog(@"set timer");
   if (timer) {
     dispatch_resume(timer);
     return;
@@ -172,7 +171,6 @@
 }
 
 - (void)info:(NSNotification *)notification {
-  NSLog(@"%@", notification);
   if ([[notification userInfo][@"Player State"] isEqualToString:@"Playing"]) {
     if ([[Subtitles sharedInstance] isReady]) {
       [panel setFloatingPanel:YES];
