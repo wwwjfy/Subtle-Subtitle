@@ -13,6 +13,9 @@
 #import "SubtitlePanel.h"
 #import "Subtitles.h"
 
+#define PANEL_WIDTH 800
+#define PANEL_HEIGHT 100
+
 @interface AppDelegate () {
   SubtitlePanel *panel;
   NSUInteger subIndex;
@@ -32,10 +35,21 @@
   iTunes = (iTunesApplication *)[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
 
   NSRect screenRect = [[NSScreen mainScreen] frame];
-  panel = [[SubtitlePanel alloc] initWithContentRect:NSMakeRect(screenRect.origin.x + 500,
-                                                                screenRect.origin.y + 50,
-                                                                800,
-                                                                100) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+  CGFloat x, y;
+  if (screenRect.size.width < PANEL_WIDTH) {
+    x = 0;
+  } else {
+    x = (screenRect.size.width - PANEL_WIDTH) / 2;
+  }
+  if (screenRect.size.height < (PANEL_HEIGHT + 50)) {
+    y = 0;
+  } else {
+    y = 50;
+  }
+  panel = [[SubtitlePanel alloc] initWithContentRect:NSMakeRect(screenRect.origin.x + x,
+                                                                screenRect.origin.y + y,
+                                                                PANEL_WIDTH,
+                                                                PANEL_HEIGHT) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
   [panel setHidesOnDeactivate:NO];
   [panel setFloatingPanel:YES];
   [panel setAlphaValue:0.9];
@@ -69,13 +83,13 @@
   return YES;
 }
 
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
-  [panel setIgnoresMouseEvents:NO];
-}
-
-- (void)applicationDidResignActive:(NSNotification *)notification {
-  [panel setIgnoresMouseEvents:YES];
-}
+//- (void)applicationDidBecomeActive:(NSNotification *)notification {
+//  [panel setIgnoresMouseEvents:NO];
+//}
+//
+//- (void)applicationDidResignActive:(NSNotification *)notification {
+//  [panel setIgnoresMouseEvents:YES];
+//}
 
 - (void)setTimerIfNecessary {
   if ([iTunes playerState] == iTunesEPlSPlaying) {
