@@ -152,6 +152,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Tony Wang";
+				TargetAttributes = {
+					36698386523F64A64BF75BA7 = {
+						DevelopmentTeam = 93RF9AKSH8;
+					};
+				};
 			};
 			buildConfigurationList = 36698E874C39C01B8FBEEB34 /* Build configuration list for PBXProject "Subtle Subtitle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -229,6 +234,7 @@
 		366985A94BF0088EB0C4F11F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Subtle Subtitle/Subtle Subtitle-Prefix.pch";
@@ -299,6 +305,7 @@
 		36698F4BC86BEA364087C38A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Subtle Subtitle/Subtle Subtitle-Prefix.pch";
