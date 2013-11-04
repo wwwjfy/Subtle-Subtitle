@@ -124,10 +124,12 @@
       }
     }
   } else {
-    dispatch_suspend(timer);
-    [panel setFloatingPanel:NO];
-    if ([[notification userInfo][@"Player State"] isEqualToString:@"Stopped"]) {
-      [panel orderOut:nil];
+    if (timer) {
+      dispatch_suspend(timer);
+      [panel setFloatingPanel:NO];
+      if ([[notification userInfo][@"Player State"] isEqualToString:@"Stopped"]) {
+        [panel orderOut:nil];
+      }
     }
   }
 }
