@@ -64,17 +64,49 @@
 }
 
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
+  return [self readSubtitleFile:filename];
+}
+
+- (IBAction)openFile:(id)sender {
+  NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+  [openPanel setCanChooseFiles:YES];
+  [openPanel setCanChooseDirectories:NO];
+  [openPanel setAllowsMultipleSelection:NO];
+  [openPanel setDelegate:self];
+  if ([openPanel runModal] == NSFileHandlingPanelOKButton) {
+    [self readSubtitleFile:[[openPanel URLs][0] path]];
+  }
+}
+
+- (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
+  NSNumber *isDir;
+  NSError *err;
+  if (![url getResourceValue:&isDir forKey:NSURLIsDirectoryKey error:&err] || err) {
+    if (err) {
+      NSLog(@"Error checking NSURLIsDirectoryKey: %@", [err localizedDescription]);
+    }
+    return NO;
+  }
+  if ([isDir boolValue]) {
+    return YES;
+  }
+  if ([[url pathExtension] isEqualToString:@"srt"]) {
+    return YES;
+  }
+  return NO;
+}
+
+- (BOOL)readSubtitleFile:(NSString *)filename {
   // guess encoding, if failed, try GBK
   NSError *err;
   NSString *content;
   content = [NSString stringWithContentsOfFile:filename usedEncoding:nil error:&err];
   if (err) {
-    NSLog(@"Error reading srt file: %@", [err localizedDescription]);
     err = nil;
     NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGBK_95);
     content = [NSString stringWithContentsOfFile:filename encoding:gbkEncoding error:&err];
     if (err) {
-      NSLog(@"Error reading srt file: %@", [err localizedDescription]);
+      [NSAlert alertWithMessageText:[err localizedDescription] defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:nil];
       return NO;
     }
   }

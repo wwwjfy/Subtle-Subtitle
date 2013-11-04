@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSOpenSavePanelDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+
+- (IBAction)openFile:(id)sender;
 
 @end
