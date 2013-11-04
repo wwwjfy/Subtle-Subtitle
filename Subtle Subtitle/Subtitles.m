@@ -47,6 +47,10 @@
   return instance;
 }
 
+- (void)clear {
+  lines = nil;
+}
+
 - (void)beginLines {
   lines = [[NSMutableArray alloc] init];
 }

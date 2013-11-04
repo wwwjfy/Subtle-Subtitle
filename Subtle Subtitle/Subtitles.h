@@ -23,6 +23,7 @@
 
 + (instancetype)sharedInstance;
 - (BOOL)isReady;
+- (void)clear;
 - (void)beginLines;
 - (void)appendLineAt:(double)time withText:(NSString *)text;
 - (NSUInteger)getLineIndexAt:(double)time;

@@ -96,6 +96,14 @@
   return NO;
 }
 
+- (void)performClose:(id)sender {
+  dispatch_suspend(timer);
+  if ([panel isVisible]) {
+    [panel orderOut:nil];
+  }
+  [[Subtitles sharedInstance] clear];
+}
+
 - (BOOL)readSubtitleFile:(NSString *)filename {
   // guess encoding, if failed, try GBK
   NSError *err;
@@ -132,6 +140,10 @@
 
 - (void)setTimer {
   NSLog(@"set timer");
+  if (timer) {
+    dispatch_resume(timer);
+    return;
+  }
   timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER,
                                  0,
                                  DISPATCH_TIMER_STRICT,
