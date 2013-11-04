@@ -110,6 +110,7 @@
       return NO;
     }
   }
+  [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:filename]];
   [SrtParser parseContentOfSrtFile:content];
   [self setTimerIfNecessary];
   return YES;
