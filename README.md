@@ -7,8 +7,8 @@ Subtle Subtitle is an OS X app that show the subtitle for the playing movie in i
 - Drag .srt file to the icon at Dock to open.
 - The subtitle window can be dragged around.
 - Subscribe to iTunes playing event.
+- Delay between the movie and the subtitle. Use arrow keys to tweak.
 
 ## Plans ##
 
-- Specify delay between the movie and the subtitle.
 - Use Accessibility to get the position of iTunes Movie window, and attach the subtitle window.
