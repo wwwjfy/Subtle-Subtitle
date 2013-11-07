@@ -92,6 +92,37 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Delay" id="k7s-kw-QH6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Delay" id="tZ3-qE-Evt" userLabel="Menu - Delay">
+                        <items>
+                            <menuItem title="Forward 0.1s" keyEquivalent="" id="Kpx-6U-xkH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="forwardTenthSec:" target="494" id="uX6-Rh-bVz"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Forward 1s" keyEquivalent="" id="hhg-rC-evQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="forwardOneSec:" target="494" id="ApU-QO-xrw"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Backward 0.1s" keyEquivalent="" id="lbL-Vj-aaY">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="backwardTenthSec:" target="494" id="s0Z-51-rph"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Backward 1s" keyEquivalent="" id="uLm-Iw-aZj">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="backwardOneSec:" target="494" id="0kz-yz-Ck1"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Help" id="490">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="491">

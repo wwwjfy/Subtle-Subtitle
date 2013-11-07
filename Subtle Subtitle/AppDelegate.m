@@ -23,6 +23,7 @@
   dispatch_source_t timer;
   NSText *lineText;
   iTunesApplication *iTunes;
+  double delay;
 }
 
 @end
@@ -78,6 +79,22 @@
   }
 }
 
+- (IBAction)forwardTenthSec:(id)sender {
+  delay += .1;
+}
+
+- (IBAction)forwardOneSec:(id)sender {
+  delay += 1;
+}
+
+- (IBAction)backwardTenthSec:(id)sender {
+  delay -= .1;
+}
+
+- (IBAction)backwardOneSec:(id)sender {
+  delay -= 1;
+}
+
 - (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
   NSNumber *isDir;
   NSError *err;
@@ -120,6 +137,7 @@
   }
   [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:filename]];
   [SrtParser parseContentOfSrtFile:content];
+  delay = 0;
   [self setTimerIfNecessary];
   return YES;
 }
@@ -158,9 +176,10 @@
 }
 
 - (void)showLine {
-  subIndex = [[Subtitles sharedInstance] getLineIndexAt:([iTunes playerPosition] + 1)];
+  double position = [iTunes playerPosition];
+  subIndex = [[Subtitles sharedInstance] getLineIndexAt:(position + delay)];
   Line *line = [[Subtitles sharedInstance] getLineAtIndex:subIndex];
-  if ([line getTime] <= ([iTunes playerPosition] + 1)) {
+  if ([line getTime] <= (position + delay)) {
     if ([line text]) {
       [lineText setString:[line text]];
       [panel orderFront:nil];

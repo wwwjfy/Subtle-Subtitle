@@ -13,5 +13,9 @@
 @property (assign) IBOutlet NSWindow *window;
 
 - (IBAction)openFile:(id)sender;
+- (IBAction)forwardTenthSec:(id)sender;
+- (IBAction)forwardOneSec:(id)sender;
+- (IBAction)backwardTenthSec:(id)sender;
+- (IBAction)backwardOneSec:(id)sender;
 
 @end
