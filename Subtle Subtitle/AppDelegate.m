@@ -158,7 +158,6 @@
 
 - (void)setTimer {
   if (timer) {
-    dispatch_resume(timer);
     return;
   }
   timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER,
@@ -193,15 +192,11 @@
   if ([[notification userInfo][@"Player State"] isEqualToString:@"Playing"]) {
     if ([[Subtitles sharedInstance] isReady]) {
       [panel setFloatingPanel:YES];
-      if (timer) {
-        dispatch_resume(timer);
-      } else {
         [self setTimer];
-      }
     }
   } else {
     if (timer) {
-      dispatch_suspend(timer);
+      timer = nil;
       [panel setFloatingPanel:NO];
       if ([[notification userInfo][@"Player State"] isEqualToString:@"Stopped"]) {
         [panel orderOut:nil];
