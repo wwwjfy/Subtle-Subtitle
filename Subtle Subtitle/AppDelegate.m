@@ -95,6 +95,10 @@
   delay -= 1;
 }
 
+- (IBAction)resetDelay:(id)sender {
+  delay = 0;
+}
+
 - (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
   NSNumber *isDir;
   NSError *err;

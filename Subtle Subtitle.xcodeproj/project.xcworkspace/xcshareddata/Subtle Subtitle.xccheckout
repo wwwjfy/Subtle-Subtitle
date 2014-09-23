@@ -10,22 +10,26 @@
 	<string>Subtle Subtitle</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0CA779A6C8B9559E154C9C3F6E36A425DE14845C</key>
+		<string>github.com:wwwjfy/Subtle-Subtitle.git</string>
 		<key>1B87A403-DD42-4567-A095-57A0284ECEDF</key>
 		<string>ssh://github.com/wwwjfy/Subtle-Subtitle.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Subtle Subtitle.xcodeproj/project.xcworkspace</string>
+	<string>Subtle Subtitle.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1B87A403-DD42-4567-A095-57A0284ECEDF</key>
+		<key>0CA779A6C8B9559E154C9C3F6E36A425DE14845C</key>
 		<string>../..</string>
+		<key>1B87A403-DD42-4567-A095-57A0284ECEDF</key>
+		<string>../../../Subtle Subtitle</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/wwwjfy/Subtle-Subtitle.git</string>
+	<string>github.com:wwwjfy/Subtle-Subtitle.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1B87A403-DD42-4567-A095-57A0284ECEDF</string>
+	<string>0CA779A6C8B9559E154C9C3F6E36A425DE14845C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>1B87A403-DD42-4567-A095-57A0284ECEDF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Subtle Subtitle</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0CA779A6C8B9559E154C9C3F6E36A425DE14845C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Subtle%20Subtitle</string>
 		</dict>
 	</array>
 </dict>

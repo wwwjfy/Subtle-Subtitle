@@ -17,5 +17,6 @@
 - (IBAction)forwardOneSec:(id)sender;
 - (IBAction)backwardTenthSec:(id)sender;
 - (IBAction)backwardOneSec:(id)sender;
+- (IBAction)resetDelay:(id)sender;
 
 @end
