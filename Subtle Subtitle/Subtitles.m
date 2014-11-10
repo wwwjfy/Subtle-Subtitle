@@ -60,14 +60,24 @@
 }
 
 - (void)appendLineAt:(double)time withText:(NSString *)text {
+  if (text) {
+    NSUInteger count = [lines count];
+    if (count > 1) {
+      // count - 2 is a valid line with text
+      Line *lastLine = lines[count-2];
+      if (time < [lastLine getTime]) {
+        [self beginLines];
+      }
+    }
+  }
   Line *line = [[Line alloc] initWithTime:time withText:text];
   [lines addObject:line];
 }
 
 - (NSUInteger)getLineIndexAt:(double)time {
-  NSUInteger low = 0;
-  NSUInteger high = [lines count] - 1;
-  NSUInteger mid;
+  NSInteger low = 0;
+  NSInteger high = [lines count] - 1;
+  NSInteger mid;
   while (low < high) {
     mid = low + (high - low) / 2;
     if ([lines[mid] getTime] < time) {
@@ -78,10 +88,10 @@
       return mid;
     }
   }
-  if ([lines[high] getTime] < time) {
-    return high;
+  if ([lines[low] getTime] < time) {
+    return low;
   } else {
-    return high - 1;
+    return low - 1;
   }
 }
 
